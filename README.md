@@ -13,4 +13,24 @@ all content and links and details i used to learn docker
 <img width="1132" height="607" alt="image" src="https://github.com/user-attachments/assets/5e1a220f-1ae2-4a62-8727-7c3eec25e06f" />
 <img width="1108" height="150" alt="image" src="https://github.com/user-attachments/assets/995b5566-414b-44a6-830c-2bb4a2d68501" />
  
-2.3 
+2.3  Docker Installation | Part 3 | Docker شرح
+>> docker -v
+
+2.4 Docker Settings | Part 4 | Docker شرح
+
+[ documentation Url](https://docs.docker.com/?uuid=F0ECF433-8FBC-496A-AAF7-FFC2482C5DFB)
+
+[ docker hub](https://hub.docker.com/)
+
+2.5 Basic Commands in Docker | Part 6 | Docker شرح
+
+----   a mean all 
+----  ls mean list 
+> docker run hello-world
+>docker ps -all
+>docker container ls -a
+>docker pull fedora:rawhide
+> docker rm id
+
+2.6 Basic Commands in Docker | Part 6 | Docker شرح
+
