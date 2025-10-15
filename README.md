@@ -27,10 +27,38 @@ all content and links and details i used to learn docker
 ----   a mean all 
 ----  ls mean list 
 > docker run hello-world
->docker ps -all
+
+>docker ps -al
+
 >docker container ls -a
+
 >docker pull fedora:rawhide
+
 > docker rm id
 
 2.6 Basic Commands in Docker | Part 6 | Docker شرح
+
+>docker pull redis:alpine3.22
+
+>docker pull redis
+
+>>docker inspect redis
+
+>>docker logs containId
+
+2.7 Basic Commands in Docker | Part 7 | Docker شرح
+
+>docker container run --detach --publish 80:80 nginx
+
+>docker container stop nginx
+
+>docker container start nginx
+
+>docker help run
+
+>docker exec -it nginx bash
+
+##>service nginx -v
+
+>
 
