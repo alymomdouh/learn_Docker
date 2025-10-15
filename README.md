@@ -60,5 +60,16 @@ all content and links and details i used to learn docker
 
 ##>service nginx -v
 
->
+2.8 Navigating Files and Directories in Bash | Part 8 | Docker شرح
+
+#> ls 
+#> cd etc
+#> cd ..
+#> cd /
+#> mkdir alyfolder 
+#> touch default.html 
+#> cp default.html foldername
+#> rm default.html 
+
+
 
