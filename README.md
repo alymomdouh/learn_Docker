@@ -72,5 +72,31 @@ all content and links and details i used to learn docker
 #> rm default.html 
 
 2.9 Docker Tags, Image Layers and Dockerfiles | Part 9 | Docker شرح
+<img width="1232" height="596" alt="image" src="https://github.com/user-attachments/assets/16437c83-8656-4636-bf05-9b480cf4875f" />
 
+2.10 10. Create New Tags and Push to Docker Hub  Part 10  Docker شرح
+> docker history redis
+
+2.11   not working 
+
+
+2.12 12. Dockerize ASP.NET Core Application  Part 12  Docker شرح
+
+
+>cd
+>mkdir dockerize
+>cd dockerize
+>dotnet new mvc --name dockertestProject --output dockerwebsiteTest
+>touch dockerFile
+>touch .dockerignore
+>docker build --tag dockertestapp .
+>docker images ls
+>docker run -d -p 8080:80 --name htapp taganem
+>in url write localhost:8080
+> dotnet build  // rebuild app
+>docker build --tag dockertestTagapp .     // rebuild docker
+> docker run -d -p 8080:80 --name htapp taganem
+>docker container ls
+> docker container rm -f htapp  /// -f  === force 
+>
 
