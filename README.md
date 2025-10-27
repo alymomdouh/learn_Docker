@@ -112,6 +112,13 @@ create Volumes contain databases and create new container refer and see or view 
 
 2.18 18. Using Bind Mounting in Docker  Part 16  Docker شرح
 Bind Mounting  mean make shared folder between containers 
+make folder as shared 
+and hosting bootstrap dashboard admin website in docker by shared 
+
+2.19 19. Docker Networking Basic Concepts  Part 17  Docker شرح
+
+2.20. Applying Docker Networking  Bridge Network  Part 18  Docker شرح
+
 
 
 
