@@ -99,4 +99,20 @@ all content and links and details i used to learn docker
 >docker container ls
 > docker container rm -f htapp  /// -f  === force 
 >
+2.13 13. Dockerize Angular Application  Part 13  Docker شرح
+
+
+
+2.16 16. Data Management in Docker  Part 14  Docker شرح
+<img width="1547" height="790" alt="image" src="https://github.com/user-attachments/assets/7cbadd18-9066-455f-9903-147f7925c22e" />
+
+2.17  17. Using Docker Volumes  Part 15  Docker شرح
+connect to database and create tables and new database from docker 
+create Volumes contain databases and create new container refer and see or view this Volumes
+
+2.18 18. Using Bind Mounting in Docker  Part 16  Docker شرح
+Bind Mounting  mean make shared folder between containers 
+
+
+
 
