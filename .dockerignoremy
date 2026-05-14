@@ -1,0 +1,10 @@
+[b|B]in
+[o|O]bj
+.vs
+bin
+obj
+*.user
+*.suo
+*.dbmdl
+*.cache
+*.log
