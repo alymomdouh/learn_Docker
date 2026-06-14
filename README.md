@@ -61,7 +61,7 @@ all content and links and details i used to learn docker
 ##>service nginx -v
 
 2.8 Navigating Files and Directories in Bash | Part 8 | Docker شرح
-
+```
 #> ls 
 #> cd etc
 #> cd ..
@@ -70,7 +70,7 @@ all content and links and details i used to learn docker
 #> touch default.html 
 #> cp default.html foldername
 #> rm default.html 
-
+```
 2.9 Docker Tags, Image Layers and Dockerfiles | Part 9 | Docker شرح
 <img width="1232" height="596" alt="image" src="https://github.com/user-attachments/assets/16437c83-8656-4636-bf05-9b480cf4875f" />
 
@@ -82,7 +82,7 @@ all content and links and details i used to learn docker
 
 2.12 12. Dockerize ASP.NET Core Application  Part 12  Docker شرح
 
-
+```
 >cd
 >mkdir dockerize
 >cd dockerize
@@ -99,6 +99,7 @@ all content and links and details i used to learn docker
 >docker container ls
 > docker container rm -f htapp  /// -f  === force 
 >
+```
 2.13 13. Dockerize Angular Application  Part 13  Docker شرح
 
 
@@ -107,12 +108,17 @@ all content and links and details i used to learn docker
 <img width="1547" height="790" alt="image" src="https://github.com/user-attachments/assets/7cbadd18-9066-455f-9903-147f7925c22e" />
 
 2.17  17. Using Docker Volumes  Part 15  Docker شرح
+
 connect to database and create tables and new database from docker 
+
 create Volumes contain databases and create new container refer and see or view this Volumes
 
 2.18 18. Using Bind Mounting in Docker  Part 16  Docker شرح
+
 Bind Mounting  mean make shared folder between containers 
+
 make folder as shared 
+
 and hosting bootstrap dashboard admin website in docker by shared 
 
 2.19 19. Docker Networking Basic Concepts  Part 17  Docker شرح
