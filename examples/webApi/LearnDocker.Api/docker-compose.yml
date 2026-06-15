@@ -1,0 +1,33 @@
+# if connection local services:
+#   db:
+#     image: postgres:16
+#     environment:
+#       POSTGRES_DB: learn_docker
+#       POSTGRES_USER: postgres
+#       POSTGRES_PASSWORD: postgres
+#     ports:
+#       - "5432:5432"
+#     volumes:
+#       - pgdata:/var/lib/postgresql/data
+
+#   api:
+#     build: .
+#     ports:
+#       - "8080:80"
+#     depends_on:
+#       - db
+#     environment:
+#       ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=learn_docker;Username=postgres;Password=postgres"
+
+# volumes:
+#   pgdata:
+
+#  if connection remote services: 
+  
+services:
+  api:
+    build: .
+    ports:
+      - "8080:80"
+    environment:
+      ConnectionStrings__NeonConnection: "Host=ep-curly-bread-aqpm5xf6.c-8.us-east-1.aws.neon.tech;Port=5432;Database=neondb;Username=neondb_owner;Password=npg_aRz2IuKo9xPA;SSL Mode=Require"
