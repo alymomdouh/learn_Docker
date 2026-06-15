@@ -56,3 +56,11 @@ ENTRYPOINT ["dotnet", "LearnDocker.Api.dll"]
 # Stop and remove:
 #   [docker stop my-api] 
 #   [docker rm my-api]
+
+
+#   Rebuild and run: as https
+
+#   docker stop my-api; docker rm my-api
+#   docker build -t learn-docker-api .
+#   docker run -d -p 8081:443 --name my-api learn-docker-api
+#   Then visit https://localhost:8081/swagger/index.html.
