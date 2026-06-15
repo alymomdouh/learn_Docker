@@ -28,7 +28,8 @@ RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 # Configure Kestrel to use HTTPS with the dev certificate
 ENV ASPNETCORE_HTTP_PORTS=
 ENV ASPNETCORE_HTTPS_PORTS=443
-ENV ASPNETCORE_ENVIRONMENT=Development
+ARG ENV=Development
+ENV ASPNETCORE_ENVIRONMENT=$ENV
 ENV ASPNETCORE_Kestrel__Certificates__Default__Password=password
 ENV ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
 # Check every 30s that the app responds with HTTP 200 on /api/health
@@ -64,3 +65,7 @@ ENTRYPOINT ["dotnet", "LearnDocker.Api.dll"]
 #   docker build -t learn-docker-api .
 #   docker run -d -p 8081:443 --name my-api learn-docker-api
 #   Then visit https://localhost:8081/swagger/index.html.
+
+## 
+#  docker build -t learn-docker-api --build-arg ENV=Local .
+#  docker run -d -p 8081:443 -e ASPNETCORE_ENVIRONMENT=Local --name my-api learn-docker-api

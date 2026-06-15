@@ -1,0 +1,21 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: learn_docker
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  api:
+    depends_on:
+      - db
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Local"
+      ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=learn_docker;Username=postgres;Password=admin"
+
+volumes:
+  pgdata:
