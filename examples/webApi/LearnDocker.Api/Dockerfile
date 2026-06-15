@@ -8,6 +8,8 @@ COPY ["LearnDocker.Api.csproj", "."]
 RUN dotnet restore
 # Copy the remaining source files into the container
 COPY . .
+# Generate a development certificate for HTTPS
+RUN mkdir -p /https && dotnet dev-certs https -ep /https/aspnetapp.pfx -p password
 # Build and publish the app in Release mode to /app/publish
 RUN dotnet publish LearnDocker.Api.csproj -c Release -o /app/publish
 # if one project ==> RUN dotnet publish -c Release -o /app/publish
@@ -17,15 +19,25 @@ RUN dotnet publish LearnDocker.Api.csproj -c Release -o /app/publish
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 # Set working directory inside the runtime container to /app
 WORKDIR /app
-# Expose port 80 for HTTP traffic
-EXPOSE 80
+# EXPOSE 80 Expose port 80 for HTTP traffic
+
+# Expose port 443 for HTTPS traffic
+EXPOSE 443
 # Install curl for health check
 RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+# Configure Kestrel to use HTTPS with the dev certificate
+ENV ASPNETCORE_HTTP_PORTS=
+ENV ASPNETCORE_HTTPS_PORTS=443
+ENV ASPNETCORE_ENVIRONMENT=Development
+ENV ASPNETCORE_Kestrel__Certificates__Default__Password=password
+ENV ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
 # Check every 30s that the app responds with HTTP 200 on /api/health
 # we should create new endpoint in code for this manual 
-HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 CMD curl --silent --fail http://localhost:80/api/health || exit 1
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 CMD curl -k --silent --fail https://localhost:443/api/health || exit 1
 # Copy the published output from the build stage into this stage
 COPY --from=build /app/publish .
+# Copy the dev certificate from the build stage  only for https 
+COPY --from=build /https /https
 # Set Neon PostgreSQL connection string for runtime
 ENV ConnectionStrings__NeonConnection="Host=ep-curly-bread-aqpm5xf6.c-8.us-east-1.aws.neon.tech;Port=5432;Database=neondb;Username=neondb_owner;Password=npg_aRz2IuKo9xPA;SSL Mode=Require"
 # Set the container entry point to run the application DLL
@@ -34,8 +46,8 @@ ENTRYPOINT ["dotnet", "LearnDocker.Api.dll"]
 # Build the image:
 #   [docker build -t learn-docker-api .]
 #
-# Run the container (detached, port 8080 -> 80):
-#   [docker run -d -p 8080:80 --name my-api learn-docker-api]
+# Run the container (detached, port 8081 -> 443):
+#   [docker run -d -p 8081:443 --name my-api learn-docker-api]
 #
 # Check health status:
 #   [docker ps]  (look for "healthy" under STATUS)
