@@ -1,3 +1,13 @@
+# notes 
+# -p 8080:80 what mean 
+# -p 8080:80 means -p host_port:container_port
+# The application inside the container runs a web server that listens on a port (80). 
+# Without exposing it, nothing outside the container can reach that process. 
+# Containers are isolated by default — -p punches a hole in that isolation so your host can talk to the app inside.
+# 8080:80 means: traffic to your machine's port 8080 is forwarded to the container's port 80 (where nginx listens).
+# You access it at http://localhost:8080, not port 80. Different ports avoid conflicts between the host and container
+
+
 # Use .NET 8 SDK image to build the application
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 # Set working directory inside the container to /src

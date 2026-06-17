@@ -1,8 +1,26 @@
 # Usage:
-#   docker-compose up -d             # runs with Neon (remote DB)
-#   docker-compose -f docker-compose.yml -f docker-compose.local.yml up -d   # runs with local DB
+# >>>  docker-compose up -d             # runs default file docker-compose.ym
+# >>>  docker-compose -f docker-compose.yml -f docker-compose.local.yml up -d   # runs with local DB
+# >>> docker-compose down -v           # stops and removes containers, networks, volumes created by up
+# >>> docker-compose down    # Stops and removes containers, networks created by up. Does not remove volumes by default — use -v to delete those too
+##    explaine build commands 
+
+#    >[docker-compose up -d] ###   reads your [docker-compose.yml]  
+#         builds images if needed, creates containers, networks, and volumes, 
+#         then starts all services in detached mode (background).
+
+#   >[docker-compose -f docker-compose.yml -f docker-compose.local.yml up -d]
+# This command merges both files — the base docker-compose.yml defines the API service,
+# and docker-compose.local.yml adds a local PostgreSQL container (db) and overrides the API's connection string to point to that local DB instead of the remote Neon one.
+# -f stands for --file — it tells docker-compose which compose file(s) to use. 
+# By default it looks for docker-compose.yml, but -f lets you specify a different file or pass multiple files that get merged together.
+
+# >>> docker-compose down -v
+#The -v flag tells compose to also remove named volumes declared in the volumes: section. Without it, docker-compose down removes containers and networks but leaves volumes intact.
+
 
 services:
+  
   api:
     build: .
     ports:
@@ -10,3 +28,4 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: "Development"
       ConnectionStrings__DefaultConnection: "Host=ep-curly-bread-aqpm5xf6.c-8.us-east-1.aws.neon.tech;Port=5432;Database=neondb;Username=neondb_owner;Password=npg_aRz2IuKo9xPA;SSL Mode=Require"
+       

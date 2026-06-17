@@ -1,15 +1,25 @@
+# question why in api services in file docker-compose.local.yml not add build and ports only add environment
+# Because compose merges the two files. 
+#The api service already has build and ports defined in docker-compose.yml — those are inherited. 
+# docker-compose.local.yml only needs to specify what's different (environment overrides and depends_on), 
+# keeping it short and DRY
+
+
+
 services:
   db:
     image: postgres:16
     environment:
-      POSTGRES_DB: learn_docker
+      POSTGRES_DB: learn_docker    
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: admin
     ports:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
-
+#      It creates a named volume pgdata that maps to /var/lib/postgresql/data 
+#      inside the container. This persists database data — when the container is stopped or removed,
+#      the data survives and can be reused by a new container. Without it, all DB data would be lost when the container dies
   api:
     depends_on:
       - db
